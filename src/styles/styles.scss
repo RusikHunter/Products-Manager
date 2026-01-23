@@ -1,0 +1,9 @@
+@use "./fonts";
+@use './index' as *;
+
+* {
+    color: red;
+    font-size: 40px;
+    font-family: Montserrat;
+    font-weight: 600;
+}
