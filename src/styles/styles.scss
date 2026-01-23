@@ -1,5 +1,11 @@
-@use "./fonts";
-@use './index' as *;
+@use "@/styles/fonts";
+@use "@/styles/globals";
+@use "@/styles/media";
+@use "@/styles/mixins";
+@use "@/styles/normalize";
+@use "@/styles/utils";
+@use "@/styles/variables";
+@use '@/styles/index' as *;
 
 * {
     color: red;
