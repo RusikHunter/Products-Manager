@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import routes from "@/config/routes.ts"
-import type { RouteType } from '@/config/routes.ts'
 
 function App() {
 
