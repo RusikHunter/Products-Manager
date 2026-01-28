@@ -7,13 +7,8 @@
 .container {
     display: flex;
     flex-direction: column;
-    max-width: var(--container-width-default);
     width: 100%;
-    margin-inline: auto;
-
-    @include laptop {
-        padding-inline: var(--container-padding-inline);
-    }
+    padding-inline: var(--container-padding-inline);
 
     @include mobile-small {
         padding-inline: var(--container-padding-inline-small);

@@ -25,25 +25,25 @@ const navLinks: NavigationLink[] = [
 
 function Header() {
     return (
-        <header className="header">
-            <div className="header__inner container">
-                <div className="header__row row">
-                    <div className="header__column header__column--1 column">
-                        <img src={logo} alt="Product Manager" width={1339} height={512} />
+        <header className={styles.header}>
+            <div className={`${styles.container} container`}>
+                <div className={`${styles.row} row`}>
+                    <div className={`${styles.column} ${styles.column__1} column`}>
+                        <img className={styles.logo} src={logo} alt="Product Manager" width={1339} height={512} />
                     </div>
 
-                    <div className="header__column header__column--2 column">
-                        <nav className="header__nav nav">
-                            <ul className="header__ul">
+                    <div className={`${styles.column} ${styles.column__2} column`}>
+                        <nav className={styles.nav}>
+                            <ul className={styles.ul}>
                                 {navLinks.map(({ name, path }) => (
-                                    <Link to={path}>{name}</Link>
+                                    <Link className={styles.link} to={path}>{name}</Link>
                                 ))}
                             </ul>
                         </nav>
                     </div>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
 
