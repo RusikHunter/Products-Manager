@@ -9,7 +9,7 @@ export type Route = {
     component: React.ComponentType
 }
 
-enum Routes {
+export enum Routes {
     MAIN = '/',
     PRODUCTS = '/products',
     FAQ = '/faq',

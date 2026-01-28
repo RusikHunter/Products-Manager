@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import routes from "@/config/routes.ts"
+import Header from '@/components/Header/Header'
 
 function App() {
 
 
     return (
         <Router>
-            <h1>HEADER</h1>
+            <Header />
 
             <Routes>
                 {routes.map(({ path, component: Component }) => (
