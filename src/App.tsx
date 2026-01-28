@@ -1,6 +1,23 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import routes from "@/config/routes.ts"
+import type { RouteType } from '@/config/routes.ts'
 
 function App() {
-  return <div>Products Manager</div>
+
+
+    return (
+        <Router>
+            <h1>HEADER</h1>
+
+            <Routes>
+                {routes.map(({ path, component: Component }) => (
+                    <Route key={path} path={path} element={<Component />} />
+                ))}
+            </Routes>
+
+            <h2>FOOTER</h2>
+        </Router>
+    )
 }
 
-export default App
+export default App 
