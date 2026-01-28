@@ -1,4 +1,4 @@
-@use "@/styles/mixins" as *;
+@use "@/styles/index" as *;
 
 .header {
     background-color: var(--color-blue);
@@ -8,6 +8,10 @@
 
 .row {
     padding-block: 32px;
+
+    @include mobile-small {
+        padding-block: 16px;
+    }
 }
 
 .column {}
@@ -16,6 +20,14 @@
 
 .logo {
     width: 300px;
+
+    @include tablet {
+        width: 150px;
+    }
+
+    @include mobile-small {
+        width: 100px;
+    }
 }
 
 .column__2 {}
@@ -25,11 +37,23 @@
     align-items: center;
     height: 100%;
     margin-right: 50px;
+
+    @include tablet {
+        margin-right: 0;
+    }
 }
 
 .ul {
     display: flex;
     column-gap: 72px;
+
+    @include tablet {
+        column-gap: 24px;
+    }
+
+    @include mobile-small {
+        column-gap: 8px;
+    }
 }
 
 .li {
@@ -37,7 +61,7 @@
 }
 
 .link {
-    @include fluid-text(28, 20);
+    @include fluid-text(28, 14);
     @include font(var(--font-family), 400, 1);
     color: var(--color-white);
 }
