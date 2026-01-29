@@ -5,7 +5,19 @@
 }
 
 .column {
-    width: 27%;
+    width: 33%;
+
+    @include laptop {
+        width: 50%;
+    }
+
+    @include tablet {
+        width: 66%;
+    }
+
+    @include mobile {
+        width: 100%;
+    }
 }
 
 .description_list {
