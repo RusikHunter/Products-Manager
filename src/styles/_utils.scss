@@ -26,3 +26,11 @@
     display: flex;
     flex-direction: column;
 }
+
+.section {
+    padding-block: 64px;
+
+    @include mobile {
+        padding-block: 32px;
+    }
+}

@@ -3,7 +3,7 @@ import styles from "./FAQContentSection.module.scss"
 
 function FAQContentSection() {
     return (
-        <section className="faq_content">
+        <section className={`${styles.faq_content} section`}>
             <div className={`${styles.container} container`}>
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
