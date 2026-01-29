@@ -1,0 +1,33 @@
+@use "@/styles/index" as *;
+
+.main_content {}
+
+.row {
+    justify-content: center;
+}
+
+.column {
+    gap: 48px;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    margin-top: 100px;
+    @include fluid-text(64, 48);
+    @include font(var(--font-family), 600, 1);
+}
+
+.title__blue {
+    color: var(--color-blue)
+}
+
+.link__products {
+    background-color: var(--color-blue);
+    padding: 32px 64px;
+    text-align: center;
+    border-radius: var(--border-radius-default);
+    @include fluid-text(18, 18);
+    @include font(var(--font-family), 400, 1);
+    color: var(--color-white);
+}

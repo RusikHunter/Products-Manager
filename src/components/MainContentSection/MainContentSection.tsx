@@ -8,7 +8,7 @@ function MainContentSection() {
             <div className={`${styles.container} container`}>
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
-                        <h1 className={styles.title}>Products <span className={styles.title__magenta}>Manager</span></h1>
+                        <h1 className={styles.title}>Products <span className={styles.title__blue}>Manager</span></h1>
 
                         <Link className={styles.link__products} to={Routes.PRODUCTS}>
                             Show Products
