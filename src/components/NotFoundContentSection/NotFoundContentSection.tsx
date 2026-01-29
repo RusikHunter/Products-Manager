@@ -2,7 +2,7 @@ import styles from "./NotFoundContentSection.module.scss"
 
 function NotFoundContentSection() {
     return (
-        <section className={`${styles.faq_content} section`}>
+        <section className={`${styles.notfound_content} section`}>
             <div className={`${styles.container} container`}>
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
