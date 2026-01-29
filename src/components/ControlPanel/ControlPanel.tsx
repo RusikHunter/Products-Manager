@@ -17,10 +17,12 @@ function ControlPanel() {
                     <div className={`${styles.column} column`}>
                         <h1 className={styles.title}>Control panel</h1>
 
-                        <nav className={styles.button_wrap}>
-                            {buttons.map(({ name }) => (
-                                <button className={styles.button}>{name}</button>
-                            ))}
+                        <nav className={styles.button_navigation}>
+                            <div className={styles.button_wrap}>
+                                {buttons.map(({ name }) => (
+                                    <button className={styles.button}>{name}</button>
+                                ))}
+                            </div>
                         </nav>
                     </div>
                 </div>

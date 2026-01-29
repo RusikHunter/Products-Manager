@@ -11,11 +11,20 @@
 .column {
     padding-block: 24px;
     gap: 32px;
+    width: 100%;
+    overflow: auto;
+}
+
+.button_navigation {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 12px;
 }
 
 .button_wrap {
     display: flex;
-    gap: 16px;
+    gap: 8px;
+    width: max-content;
 }
 
 .title {
