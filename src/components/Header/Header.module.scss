@@ -4,19 +4,13 @@
     background-color: var(--color-blue);
 }
 
-.container {}
-
-.row {
+.container {
     padding-block: 32px;
 
     @include mobile-small {
         padding-block: 16px;
     }
 }
-
-.column {}
-
-.column__1 {}
 
 .logo {
     width: 300px;
@@ -29,8 +23,6 @@
         width: 100px;
     }
 }
-
-.column__2 {}
 
 .nav {
     display: flex;

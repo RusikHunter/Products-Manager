@@ -10,11 +10,16 @@ function App() {
         <Router>
             <Header />
 
-            <Routes>
-                {routes.map(({ path, component: Component }) => (
-                    <Route key={path} path={path} element={<Component />} />
-                ))}
-            </Routes>
+            <main>
+                <Routes>
+                    {routes.map(({ path, component: Component }) => (
+                        <Route key={path} path={path} element={<Component />} />
+                    ))}
+
+                </Routes>
+
+            </main>
+
 
             <Footer />
         </Router>
