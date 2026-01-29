@@ -1,6 +1,8 @@
+import NotFoundContentSection from "@/components/NotFoundContentSection/NotFoundContentSection"
+
 function NotFoundPage() {
     return (
-        <h1>NotFoundPage</h1>
+        <NotFoundContentSection />
     )
 }
 
