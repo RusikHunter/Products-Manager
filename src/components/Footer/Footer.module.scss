@@ -17,7 +17,7 @@
 }
 
 .title {
-    @include fluid-text(18, 16);
+    @include fluid-text(18, 14);
     @include font(var(--font-family), 400, 1);
     color: var(--color-white);
 }
