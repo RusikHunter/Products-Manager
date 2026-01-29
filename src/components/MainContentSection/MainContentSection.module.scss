@@ -10,12 +10,25 @@
     gap: 48px;
     align-items: center;
     text-align: center;
+
+    @include mobile {
+        gap: 24px;
+    }
 }
 
 .title {
     margin-top: 100px;
     @include fluid-text(64, 48);
     @include font(var(--font-family), 600, 1);
+
+    @include mobile {
+        margin-top: 50px;
+        @include fluid-text(48, 36);
+    }
+
+    @include mobile-small {
+        @include fluid-text(32, 28);
+    }
 }
 
 .title__blue {
