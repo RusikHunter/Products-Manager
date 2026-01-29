@@ -1,0 +1,19 @@
+@use "@/styles/index" as *;
+
+.row {
+    justify-content: center;
+}
+
+.title {
+    margin-top: 50px;
+    @include fluid-text(48, 28);
+    @include font(var(--font-family), 400, 1);
+
+    @include mobile {
+        margin-top: 25px;
+    }
+
+    @include mobile-small {
+        margin-top: 15px;
+    }
+}

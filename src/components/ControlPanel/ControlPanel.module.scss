@@ -1,0 +1,38 @@
+@use "@/styles/index" as *;
+
+.control_panel_content {
+    padding-top: 16px;
+}
+
+.container {
+    background-color: var(--color-gray);
+}
+
+.column {
+    padding-block: 24px;
+    gap: 32px;
+    width: 100%;
+    overflow: auto;
+}
+
+.button_navigation {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 12px;
+}
+
+.button_wrap {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+}
+
+.title {
+    @include fluid-text(24, 18);
+    @include font(var(--font-family), 400, 1);
+}
+
+.button {
+    padding: 8px 16px;
+    @include font(var(--font-family), 400, 1);
+}

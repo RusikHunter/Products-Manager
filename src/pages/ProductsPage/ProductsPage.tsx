@@ -1,6 +1,8 @@
+import ControlPanel from "@/components/ControlPanel/ControlPanel"
+
 function ProductsPage() {
     return (
-        <h1>ProductsPage</h1>
+        <ControlPanel />
     )
 }
 
