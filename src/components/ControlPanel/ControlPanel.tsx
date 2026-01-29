@@ -11,15 +11,17 @@ const buttons = [
 
 function ControlPanel() {
     return (
-        <section className={`${styles.main_content} section`}>
+        <section className={`${styles.control_panel_content} section`}>
             <div className={`${styles.container} container`}>
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
                         <h1 className={styles.title}>Control panel</h1>
 
-                        {buttons.map(({ name }) => (
-                            <button className={styles.button}>{name}</button>
-                        ))}
+                        <nav className={styles.button_wrap}>
+                            {buttons.map(({ name }) => (
+                                <button className={styles.button}>{name}</button>
+                            ))}
+                        </nav>
                     </div>
                 </div>
             </div>
