@@ -1,6 +1,8 @@
+import FAQContentSection from "@/components/FAQContentSection/FAQContentSection"
+
 function FAQPage() {
     return (
-        <h1>FAQPage</h1>
+        <FAQContentSection />
     )
 }
 

@@ -1,0 +1,36 @@
+@use "@/styles/index" as *;
+
+.faq_content {}
+
+.container {
+    padding-block: 64px;
+}
+
+.row {}
+
+.column {
+    width: 27%;
+}
+
+.description_list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.description_list__td_wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.description_term {
+    @include fluid-text(24, 20);
+    @include font(var(--font-family), 600, 1);
+}
+
+.description_definition {
+    @include fluid-text(20, 18);
+    @include font(var(--font-family), 400, 1);
+    color: var(--color-gray);
+}
