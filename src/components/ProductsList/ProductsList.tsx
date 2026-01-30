@@ -1,5 +1,6 @@
 import styles from "./ProductsList.module.scss"
 import Product from "@/components/Product/Product"
+import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 
 function ProductsList() {
     return (
@@ -12,6 +13,8 @@ function ProductsList() {
                             <Product />
                             <Product />
                         </ul>
+
+                        <ProductInfoModal />
                     </div>
                 </div>
             </div>
