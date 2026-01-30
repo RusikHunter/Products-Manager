@@ -6,6 +6,15 @@
     border-width: 4px;
     padding: 16px;
     border-radius: var(--border-radius-default);
+
+    @include tablet {
+        top: 100px;
+        width: 75%;
+    }
+
+    @include mobile {
+        width: 96%;
+    }
 }
 
 .dialog__content {
