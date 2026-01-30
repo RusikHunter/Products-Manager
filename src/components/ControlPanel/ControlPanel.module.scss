@@ -1,7 +1,7 @@
 @use "@/styles/index" as *;
 
 .control_panel_content {
-    padding-top: 16px;
+    padding-block: 16px 8px;
 }
 
 .container {
@@ -29,10 +29,5 @@
 
 .title {
     @include fluid-text(24, 18);
-    @include font(var(--font-family), 400, 1);
-}
-
-.button {
-    padding: 8px 16px;
     @include font(var(--font-family), 400, 1);
 }

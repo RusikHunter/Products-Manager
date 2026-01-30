@@ -1,0 +1,86 @@
+@use "@/styles/index" as *;
+
+.product {
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    padding: 16px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile {
+        flex-direction: column;
+        gap: 48px;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.id {
+    @include fluid-text(18, 18);
+    @include font(var(--font-family), 400, 1);
+}
+
+.title {
+    @include fluid-text(36, 36);
+    @include font(var(--font-family), 600, 1);
+}
+
+.count {
+    @include fluid-text(28, 28);
+    @include font(var(--font-family), 400, 1);
+}
+
+.control_panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include mobile {
+        flex-direction: row;
+        position: relative;
+    }
+
+    @include mobile-small {
+        flex-wrap: wrap;
+    }
+}
+
+.label__select {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.checkbox__select {
+    width: 32px;
+    height: 32px;
+    margin-inline: auto;
+
+    @include mobile {
+        position: absolute;
+        right: 0;
+        top: -85px;
+    }
+
+    @include mobile-small {
+        top: -110px;
+    }
+}
+
+.button__delete,
+.button__info {
+    width: 150px;
+
+    @include mobile-small {
+        width: 100%;
+    }
+}

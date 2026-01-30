@@ -36,7 +36,9 @@ function Header() {
                         <nav className={styles.nav}>
                             <ul className={styles.ul}>
                                 {navLinks.map(({ name, path }) => (
-                                    <Link className={styles.link} to={path}>{name}</Link>
+                                    <li key={name} className={styles.list_item}>
+                                        <Link className={styles.link} to={path}>{name}</Link>
+                                    </li>
                                 ))}
                             </ul>
                         </nav>

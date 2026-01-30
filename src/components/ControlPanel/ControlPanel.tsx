@@ -1,15 +1,31 @@
+import { useAppDispatch } from "@/hooks/useAppDispatch"
+import { removeProducts } from "@/store/reducers/productsReducer"
 import styles from "./ControlPanel.module.scss"
-
-const buttons = [
-    { name: "Add new product" },
-    { name: "Update the list" },
-    { name: "Sort by" },
-    { name: "Delete selected products" },
-    { name: "Delete all products" },
-
-]
+import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 
 function ControlPanel() {
+    const buttons = [
+        { name: "Add new product", onClickFunction: mock },
+        { name: "Update the list", onClickFunction: updateList },
+        { name: "Sort by", onClickFunction: mock },
+        { name: "Delete selected products", onClickFunction: mock },
+        { name: "Delete all products", onClickFunction: deleteAllProducts },
+    ]
+
+    const dispatch = useAppDispatch()
+
+    function updateList() {
+        dispatch(fetchProducts())
+    }
+
+    function deleteAllProducts() {
+        dispatch(removeProducts())
+    }
+
+    function mock() {
+        console.log(123)
+    }
+
     return (
         <section className={`${styles.control_panel_content} section`}>
             <div className={`${styles.container} container`}>
@@ -19,8 +35,12 @@ function ControlPanel() {
 
                         <nav className={styles.button_navigation}>
                             <div className={styles.button_wrap}>
-                                {buttons.map(({ name }) => (
-                                    <button className={styles.button}>{name}</button>
+                                {buttons.map(({ name, onClickFunction }) => (
+                                    <button
+                                        key={name}
+                                        className={`${styles.button} button__control`}
+                                        onClick={onClickFunction}
+                                    >{name}</button>
                                 ))}
                             </div>
                         </nav>

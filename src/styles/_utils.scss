@@ -3,6 +3,7 @@
 // 
 
 @use "@/styles/media" as *;
+@use "@/styles/mixins" as *;
 
 .container {
     display: flex;
@@ -33,4 +34,9 @@
     @include mobile {
         padding-block: 32px;
     }
+}
+
+.button__control {
+    padding: 8px 16px;
+    @include font(var(--font-family), 400, 1);
 }
