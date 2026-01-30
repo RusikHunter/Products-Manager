@@ -16,9 +16,9 @@ function Product() {
                     <label htmlFor="checkbox__select__1"></label>
                     <input className={styles.checkbox__select} id="checkbox__select__1" type="checkbox" />
 
-                    <button className={styles.button__delete}>Delete</button>
+                    <button className={`${styles.button__delete} button__control`}>Delete</button>
 
-                    <button className={styles.button__info}>Show info</button>
+                    <button className={`${styles.button__info} button__control`}>Show info</button>
                 </div>
             </div>
         </article>

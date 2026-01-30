@@ -31,8 +31,3 @@
     @include fluid-text(24, 18);
     @include font(var(--font-family), 400, 1);
 }
-
-.button {
-    padding: 8px 16px;
-    @include font(var(--font-family), 400, 1);
-}

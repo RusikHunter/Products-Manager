@@ -20,7 +20,7 @@ function ControlPanel() {
                         <nav className={styles.button_navigation}>
                             <div className={styles.button_wrap}>
                                 {buttons.map(({ name }) => (
-                                    <button className={styles.button}>{name}</button>
+                                    <button className={`${styles.button} button__control`}>{name}</button>
                                 ))}
                             </div>
                         </nav>
