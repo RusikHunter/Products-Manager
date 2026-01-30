@@ -1,0 +1,50 @@
+@use "@/styles/index" as *;
+
+.product {
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    padding: 16px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.id {
+    @include fluid-text(18, 18);
+    @include font(var(--font-family), 400, 1);
+}
+
+.title {
+    @include fluid-text(36, 36);
+    @include font(var(--font-family), 600, 1);
+}
+
+.count {
+    @include fluid-text(28, 28);
+    @include font(var(--font-family), 400, 1);
+}
+
+.control_panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkbox__select {
+    width: 32px;
+    height: 32px;
+    margin-inline: auto;
+}
+
+.button__delete,
+.button__info {
+    width: 150px;
+}

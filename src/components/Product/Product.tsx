@@ -5,7 +5,7 @@ function Product() {
         <article className={styles.product}>
             <div className={styles.content}>
                 <div className={styles.info}>
-                    <p className={styles.id}>123</p>
+                    <p className={styles.id}>ID: 123</p>
 
                     <h6 className={styles.title}>Banana</h6>
 
@@ -16,7 +16,9 @@ function Product() {
                     <label htmlFor="checkbox__select__1"></label>
                     <input className={styles.checkbox__select} id="checkbox__select__1" type="checkbox" />
 
-                    <button className={styles.button__delete}></button>
+                    <button className={styles.button__delete}>Delete</button>
+
+                    <button className={styles.button__info}>Show info</button>
                 </div>
             </div>
         </article>
