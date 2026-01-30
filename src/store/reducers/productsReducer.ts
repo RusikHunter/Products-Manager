@@ -1,19 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchProducts } from '@/store/asyncActions/fetchProducts'
-import type { Product } from '@/store/asyncActions/fetchProducts'
+import type { ProductType } from '@/store/asyncActions/fetchProducts'
 
 type InitialStateType = {
-    products: Product[]
+    products: ProductType[]
 }
 
 const initialState: InitialStateType = {
     products: []
 }
 
-const clientSlice = createSlice({
+const productsSlice = createSlice({
     name: 'products',
     initialState,
-    reducers: {},
+    reducers: {
+        removeProducts: (state) => {
+            console.log(123)
+            state.products = []
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.fulfilled, (state, action) => {
@@ -22,4 +27,5 @@ const clientSlice = createSlice({
     }
 })
 
-export default clientSlice.reducer
+export const { removeProducts } = productsSlice.actions
+export default productsSlice.reducer
