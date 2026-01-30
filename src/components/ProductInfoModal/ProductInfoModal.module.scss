@@ -1,0 +1,42 @@
+@use "@/styles/index" as *;
+
+.dialog {
+    width: 50%;
+    border: var(--border-default);
+    border-width: 4px;
+    padding: 16px;
+    border-radius: var(--border-radius-default);
+}
+
+.dialog__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.button__close {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+.id,
+.description,
+.production__date,
+.price {
+    width: 75%;
+    @include fluid-text(18, 18);
+    @include font(var(--font-family), 400, 1);
+}
+
+.title {
+    @include fluid-text(36, 36);
+    @include font(var(--font-family), 600, 1);
+}
+
+.count {
+    margin-top: 16px;
+    @include fluid-text(28, 28);
+    @include font(var(--font-family), 400, 1);
+}
