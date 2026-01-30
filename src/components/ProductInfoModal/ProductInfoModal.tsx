@@ -2,7 +2,7 @@ import styles from "./ProductInfoModal.module.scss"
 
 function ProductInfoModal() {
     return (
-        <dialog open className={`${styles.dialog} dialog`}>
+        <dialog className={`${styles.dialog} dialog`}>
             <div className={styles.dialog__content}>
                 <button className={`${styles.button__close} button__control`}>X</button>
 
