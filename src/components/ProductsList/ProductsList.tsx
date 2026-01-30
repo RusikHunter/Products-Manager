@@ -1,4 +1,5 @@
 import styles from "./ProductsList.module.scss"
+import Product from "@/components/Product/Product"
 
 function ProductsList() {
     return (
@@ -7,12 +8,9 @@ function ProductsList() {
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
                         <ul className={styles.list}>
-                            abc
-                            abc
-                            abc
-                            abc
-                            abc
-                            abc
+                            <Product />
+                            <Product />
+                            <Product />
                         </ul>
                     </div>
                 </div>
