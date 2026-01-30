@@ -3,11 +3,13 @@ import { fetchProducts } from '@/store/asyncActions/fetchProducts'
 import type { ProductType } from '@/store/asyncActions/fetchProducts'
 
 type InitialStateType = {
-    products: ProductType[]
+    products: ProductType[],
+    selectedProducts: ProductType[]
 }
 
 const initialState: InitialStateType = {
-    products: []
+    products: [],
+    selectedProducts: []
 }
 
 const productsSlice = createSlice({
@@ -17,7 +19,22 @@ const productsSlice = createSlice({
         removeProducts: (state) => {
             console.log(123)
             state.products = []
-        }
+        },
+        removeProductByObject: (state, action) => {
+            // action.payload must have an product
+            const index = state.products.findIndex(p => p.id === action.payload.id)
+
+            if (index !== -1) state.products.splice(index, 1)
+        },
+        addProductToSelected: (state, action) => {
+            state.selectedProducts.push(action.payload)
+        },
+        // todo -->
+        removeProductOfSelected: (state, action) => {
+            const index = state.products.findIndex(p => p.id === action.payload.id)
+
+            if (index !== -1) state.selectedProducts.splice(index, 1)
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -27,5 +44,12 @@ const productsSlice = createSlice({
     }
 })
 
-export const { removeProducts } = productsSlice.actions
+export const
+    {
+        removeProducts,
+        removeProductByObject,
+        addProductToSelected,
+        removeProductOfSelected
+    } = productsSlice.actions
+
 export default productsSlice.reducer
