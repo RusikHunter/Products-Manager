@@ -1,17 +1,22 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch"
 import { removeProducts } from "@/store/reducers/productsReducer"
 import styles from "./ControlPanel.module.scss"
+import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 
 function ControlPanel() {
     const buttons = [
         { name: "Add new product", onClickFunction: mock },
-        { name: "Update the list", onClickFunction: mock },
+        { name: "Update the list", onClickFunction: updateList },
         { name: "Sort by", onClickFunction: mock },
         { name: "Delete selected products", onClickFunction: mock },
         { name: "Delete all products", onClickFunction: deleteAllProducts },
     ]
 
     const dispatch = useAppDispatch()
+
+    function updateList() {
+        dispatch(fetchProducts())
+    }
 
     function deleteAllProducts() {
         dispatch(removeProducts())
@@ -32,6 +37,7 @@ function ControlPanel() {
                             <div className={styles.button_wrap}>
                                 {buttons.map(({ name, onClickFunction }) => (
                                     <button
+                                        key={name}
                                         className={`${styles.button} button__control`}
                                         onClick={onClickFunction}
                                     >{name}</button>

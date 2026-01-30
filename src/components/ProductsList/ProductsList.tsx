@@ -17,7 +17,7 @@ function ProductsList() {
                             {products !== undefined ?
 
                                 products.map((product) => (
-                                    <Product product={product} />
+                                    <Product key={product.id} product={product} />
                                 ))
                                 :
                                 <h1>No products yet</h1>
