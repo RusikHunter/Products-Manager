@@ -1,15 +1,20 @@
 import styles from "./Product.module.scss"
+import type { ProductType } from "@/store/asyncActions/fetchProducts"
 
-function Product() {
+type ProductProps = {
+    product: ProductType
+}
+
+function Product({ product }: ProductProps) {
     return (
         <article className={styles.product}>
             <div className={styles.content}>
                 <div className={styles.info}>
-                    <p className={styles.id}>ID: 123</p>
+                    <p className={styles.id}>ID: {product.id}</p>
 
-                    <h6 className={styles.title}>Banana</h6>
+                    <h6 className={styles.title}>{product.title}</h6>
 
-                    <p className={styles.count}>Count: 999</p>
+                    <p className={styles.count}>Count: {product.count}</p>
                 </div>
 
                 <div className={styles.control_panel}>

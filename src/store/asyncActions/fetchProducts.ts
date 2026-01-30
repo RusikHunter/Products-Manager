@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-export type Product = {
+export type ProductType = {
     id: number;
     title: string;
     description: string;
@@ -12,11 +12,11 @@ export type Product = {
 
 const url = "https://697c90fe889a1aecfeb2dbd0.mockapi.io/products"
 
-export const fetchProducts = createAsyncThunk<Product[], void, { rejectValue: string }>(
+export const fetchProducts = createAsyncThunk<ProductType[], void, { rejectValue: string }>(
     'products/fetchProducts',
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get<Product[]>(url)
+            const response = await axios.get<ProductType[]>(url)
             return response.data
         } catch (error) {
             return thunkAPI.rejectWithValue('Error loading posts: ' + (error as Error))

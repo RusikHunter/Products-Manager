@@ -4,7 +4,7 @@ import productsReducer from '@/store/reducers/productsReducer'
 
 const store = configureStore({
     reducer: {
-        client: productsReducer
+        productsReducer: productsReducer
     },
 })
 
