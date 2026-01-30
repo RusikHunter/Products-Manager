@@ -13,7 +13,7 @@ function Product() {
                 </div>
 
                 <div className={styles.control_panel}>
-                    <label htmlFor="checkbox__select__1"></label>
+                    <label className={styles.label__select} htmlFor="checkbox__select__1"></label>
                     <input className={styles.checkbox__select} id="checkbox__select__1" type="checkbox" />
 
                     <button className={`${styles.button__delete} button__control`}>Delete</button>
