@@ -6,7 +6,14 @@ function ProductsList() {
             <div className={`${styles.container} container`}>
                 <div className={`${styles.row} row`}>
                     <div className={`${styles.column} column`}>
-
+                        <ul className={styles.list}>
+                            abc
+                            abc
+                            abc
+                            abc
+                            abc
+                            abc
+                        </ul>
                     </div>
                 </div>
             </div>

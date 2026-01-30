@@ -1,0 +1,15 @@
+.products_list_content {
+    padding-block: 16px 8px;
+}
+
+.column {
+    width: 100%;
+}
+
+.list {
+    display: block;
+    width: 100%;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    padding: 16px;
+}
