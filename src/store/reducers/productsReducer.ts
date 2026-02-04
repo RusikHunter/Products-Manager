@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchProducts } from '@/store/asyncActions/fetchProducts'
-import type { ProductType } from '@/store/asyncActions/fetchProducts'
+import type { ProductType } from '@/@types/ProductType'
+import { SortSelectValues } from '@/components/ControlPanel/ControlPanel'
 
 type InitialStateType = {
     products: ProductType[],
@@ -20,25 +21,45 @@ const productsSlice = createSlice({
             console.log(123)
             state.products = []
         },
-        removeProductByObject: (state, action) => {
-            // action.payload must have an product
+        removeProductByObject: (state, action): void => {
             const index = state.products.findIndex(p => p.id === action.payload.id)
 
             if (index !== -1) state.products.splice(index, 1)
         },
-        addProductToSelected: (state, action) => {
+        addProductToSelected: (state, action): void => {
             state.selectedProducts.push(action.payload)
         },
-        // todo -->
-        removeProductOfSelected: (state, action) => {
-            const index = state.products.findIndex(p => p.id === action.payload.id)
+        removeProductOfSelected: (state, action): void => {
+            const index = state.selectedProducts.findIndex(p => p.id === action.payload.id)
 
             if (index !== -1) state.selectedProducts.splice(index, 1)
         },
+        removeSelectedProducts: (state): void => {
+            for (const product of state.selectedProducts) {
+                const index = state.products.findIndex(p => p.id === product.id)
+
+                if (index !== -1) state.products.splice(index, 1)
+            }
+
+            state.selectedProducts = []
+        },
+        sortProductsBy: (state, action): void => {
+            switch (action.payload) {
+                case SortSelectValues.BY_ID:
+                    state.products.sort((a, b) => a.id - b.id)
+                    break
+                case SortSelectValues.BY_QUANTITY:
+                    state.products.sort((a, b) => a.count - b.count)
+                    break
+                case SortSelectValues.BY_PRICE:
+                    state.products.sort((a, b) => a.price - b.price)
+                    break
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.fulfilled, (state, action) => {
+            .addCase(fetchProducts.fulfilled, (state, action): void => {
                 state.products = action.payload
             })
     }
@@ -49,7 +70,9 @@ export const
         removeProducts,
         removeProductByObject,
         addProductToSelected,
-        removeProductOfSelected
+        removeProductOfSelected,
+        removeSelectedProducts,
+        sortProductsBy
     } = productsSlice.actions
 
 export default productsSlice.reducer

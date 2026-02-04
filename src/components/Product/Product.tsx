@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch"
 import styles from "./Product.module.scss"
-import type { ProductType } from "@/store/asyncActions/fetchProducts"
+import type { ProductType } from "@/@types/ProductType"
 import { removeProductByObject } from "@/store/reducers/productsReducer"
 import { addProductToSelected } from "@/store/reducers/productsReducer"
 import { removeProductOfSelected } from "@/store/reducers/productsReducer"
@@ -12,14 +12,12 @@ type ProductProps = {
 function Product({ product }: ProductProps) {
     const dispatch = useAppDispatch()
 
-    function onDelete() {
+    function onDelete(): void {
         dispatch(removeProductByObject(product))
     }
 
     function onCheckboxClick(event: React.ChangeEvent<HTMLInputElement>): void {
-        const checked = event.target.checked
-
-        console.log(checked)
+        const checked: boolean = event.target.checked
 
         if (checked) {
             dispatch(addProductToSelected(product))
