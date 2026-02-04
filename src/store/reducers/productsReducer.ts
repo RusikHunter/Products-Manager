@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { fetchProducts } from '@/store/asyncActions/fetchProducts'
-import type { ProductType } from '@/store/asyncActions/fetchProducts'
+import type { ProductType } from '@/@types/ProductType'
 import { SortSelectValues } from '@/components/ControlPanel/ControlPanel'
 
 type InitialStateType = {
@@ -21,20 +21,20 @@ const productsSlice = createSlice({
             console.log(123)
             state.products = []
         },
-        removeProductByObject: (state, action) => {
+        removeProductByObject: (state, action): void => {
             const index = state.products.findIndex(p => p.id === action.payload.id)
 
             if (index !== -1) state.products.splice(index, 1)
         },
-        addProductToSelected: (state, action) => {
+        addProductToSelected: (state, action): void => {
             state.selectedProducts.push(action.payload)
         },
-        removeProductOfSelected: (state, action) => {
+        removeProductOfSelected: (state, action): void => {
             const index = state.selectedProducts.findIndex(p => p.id === action.payload.id)
 
             if (index !== -1) state.selectedProducts.splice(index, 1)
         },
-        removeSelectedProducts: (state) => {
+        removeSelectedProducts: (state): void => {
             for (const product of state.selectedProducts) {
                 const index = state.products.findIndex(p => p.id === product.id)
 
@@ -43,7 +43,7 @@ const productsSlice = createSlice({
 
             state.selectedProducts = []
         },
-        sortProductsBy: (state, action) => {
+        sortProductsBy: (state, action): void => {
             switch (action.payload) {
                 case SortSelectValues.BY_ID:
                     state.products.sort((a, b) => a.id - b.id)
@@ -59,7 +59,7 @@ const productsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.fulfilled, (state, action) => {
+            .addCase(fetchProducts.fulfilled, (state, action): void => {
                 state.products = action.payload
             })
     }

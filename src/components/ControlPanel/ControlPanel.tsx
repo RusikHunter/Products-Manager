@@ -36,20 +36,20 @@ function ControlPanel() {
 
     const dispatch = useAppDispatch()
 
-    function updateList() {
+    function updateList(): void {
         dispatch(fetchProducts())
     }
 
-    function deleteAllProducts() {
+    function deleteAllProducts(): void {
         dispatch(removeProducts())
     }
 
-    function deleteSelectedProducts() {
+    function deleteSelectedProducts(): void {
         dispatch(removeSelectedProducts())
     }
 
-    function sortBy(e: React.ChangeEvent<HTMLSelectElement>) {
-        const value = Number(e.target.value)
+    function sortBy(e: React.ChangeEvent<HTMLSelectElement>): void {
+        const value: number = Number(e.target.value)
 
         dispatch(sortProductsBy(value))
     }

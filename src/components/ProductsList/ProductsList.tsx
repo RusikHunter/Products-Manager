@@ -2,9 +2,10 @@ import styles from "./ProductsList.module.scss"
 import Product from "@/components/Product/Product"
 import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 import { useAppSelector } from "@/hooks/useAppSelector"
+import type { ProductType } from "@/@types/ProductType"
 
 function ProductsList() {
-    const products = useAppSelector(state => state.productsReducer.products)
+    const products: ProductType[] = useAppSelector(state => state.productsReducer.products)
 
     if (!products) return
 
