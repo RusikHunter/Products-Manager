@@ -36,7 +36,10 @@
     }
 }
 
-.button__control {
+.button__control,
+.select__control {
+    background-color: transparent;
+    border: 1px solid var(--color-black);
     padding: 8px 16px;
     @include font(var(--font-family), 400, 1);
 }

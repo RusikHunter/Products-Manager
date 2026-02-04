@@ -3,13 +3,29 @@ import { removeProducts, removeSelectedProducts } from "@/store/reducers/product
 import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 
+type Control = {
+    name: string,
+    onClickFunction?: () => void,
+    options?: {
+        name: string,
+        value: string
+    }[],
+    type: "button" | "select"
+}
+
 function ControlPanel() {
-    const buttons = [
-        { name: "Add new product", onClickFunction: mock },
-        { name: "Update the list", onClickFunction: updateList },
-        { name: "Sort by", onClickFunction: mock },
-        { name: "Delete selected products", onClickFunction: deleteSelectedProducts },
-        { name: "Delete all products", onClickFunction: deleteAllProducts },
+    const controls: Control[] = [
+        { name: "Add new product", onClickFunction: mock, type: "button" },
+        { name: "Update the list", onClickFunction: updateList, type: "button" },
+        {
+            name: "Sort by", options: [
+                { name: "By ID", value: "byid" },
+                { name: "By quantity", value: "byquantity" },
+                { name: "By price", value: "byprice" }
+            ], type: "select"
+        },
+        { name: "Delete selected products", onClickFunction: deleteSelectedProducts, type: "button" },
+        { name: "Delete all products", onClickFunction: deleteAllProducts, type: "button" },
     ]
 
     const dispatch = useAppDispatch()
@@ -39,12 +55,23 @@ function ControlPanel() {
 
                         <nav className={styles.button_navigation}>
                             <div className={styles.button_wrap}>
-                                {buttons.map(({ name, onClickFunction }) => (
-                                    <button
-                                        key={name}
-                                        className={`${styles.button} button__control`}
-                                        onClick={onClickFunction}
-                                    >{name}</button>
+                                {controls.map(({ name, onClickFunction, options, type }) => (
+                                    type === "button"
+                                        ?
+                                        <button
+                                            key={name}
+                                            className={`${styles.button} button__control`}
+                                            onClick={onClickFunction}
+                                        >{name}</button>
+                                        :
+                                        <select
+                                            key={name}
+                                            className={`${styles.select} select__control`}
+                                        >
+                                            {options?.map(({ name, value }) => (
+                                                <option value={value}>{name}</option>
+                                            ))}
+                                        </select>
                                 ))}
                             </div>
                         </nav>
