@@ -1,14 +1,20 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch"
-import { removeProducts, removeSelectedProducts } from "@/store/reducers/productsReducer"
+import { removeProducts, removeSelectedProducts, sortProductsBy } from "@/store/reducers/productsReducer"
 import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
+
+export enum SortSelectValues {
+    BY_ID,
+    BY_QUANTITY,
+    BY_PRICE
+}
 
 type Control = {
     name: string,
     onClickFunction?: () => void,
     options?: {
         name: string,
-        value: string
+        value: number
     }[],
     type: "button" | "select"
 }
@@ -19,9 +25,9 @@ function ControlPanel() {
         { name: "Update the list", onClickFunction: updateList, type: "button" },
         {
             name: "Sort by", options: [
-                { name: "By ID", value: "byid" },
-                { name: "By quantity", value: "byquantity" },
-                { name: "By price", value: "byprice" }
+                { name: "By ID", value: SortSelectValues.BY_ID },
+                { name: "By quantity", value: SortSelectValues.BY_QUANTITY },
+                { name: "By price", value: SortSelectValues.BY_PRICE }
             ], type: "select"
         },
         { name: "Delete selected products", onClickFunction: deleteSelectedProducts, type: "button" },
@@ -40,6 +46,12 @@ function ControlPanel() {
 
     function deleteSelectedProducts() {
         dispatch(removeSelectedProducts())
+    }
+
+    function sortBy(e: React.ChangeEvent<HTMLSelectElement>) {
+        const value = Number(e.target.value)
+
+        dispatch(sortProductsBy(value))
     }
 
     function mock() {
@@ -67,9 +79,13 @@ function ControlPanel() {
                                         <select
                                             key={name}
                                             className={`${styles.select} select__control`}
+                                            onChange={sortBy}
                                         >
                                             {options?.map(({ name, value }) => (
-                                                <option value={value}>{name}</option>
+                                                <option
+                                                    value={value}
+                                                    key={value}
+                                                >{name}</option>
                                             ))}
                                         </select>
                                 ))}
