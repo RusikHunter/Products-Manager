@@ -31,10 +31,19 @@ const productsSlice = createSlice({
         },
         // todo -->
         removeProductOfSelected: (state, action) => {
-            const index = state.products.findIndex(p => p.id === action.payload.id)
+            const index = state.selectedProducts.findIndex(p => p.id === action.payload.id)
 
             if (index !== -1) state.selectedProducts.splice(index, 1)
         },
+        removeSelectedProducts: (state) => {
+            for (const product of state.selectedProducts) {
+                const index = state.products.findIndex(p => p.id === product.id)
+
+                if (index !== -1) state.products.splice(index, 1)
+            }
+
+            state.selectedProducts = []
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -49,7 +58,8 @@ export const
         removeProducts,
         removeProductByObject,
         addProductToSelected,
-        removeProductOfSelected
+        removeProductOfSelected,
+        removeSelectedProducts
     } = productsSlice.actions
 
 export default productsSlice.reducer

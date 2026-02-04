@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/hooks/useAppDispatch"
-import { removeProducts } from "@/store/reducers/productsReducer"
+import { removeProducts, removeSelectedProducts } from "@/store/reducers/productsReducer"
 import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 
@@ -8,7 +8,7 @@ function ControlPanel() {
         { name: "Add new product", onClickFunction: mock },
         { name: "Update the list", onClickFunction: updateList },
         { name: "Sort by", onClickFunction: mock },
-        { name: "Delete selected products", onClickFunction: mock },
+        { name: "Delete selected products", onClickFunction: deleteSelectedProducts },
         { name: "Delete all products", onClickFunction: deleteAllProducts },
     ]
 
@@ -20,6 +20,10 @@ function ControlPanel() {
 
     function deleteAllProducts() {
         dispatch(removeProducts())
+    }
+
+    function deleteSelectedProducts() {
+        dispatch(removeSelectedProducts())
     }
 
     function mock() {

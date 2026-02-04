@@ -19,8 +19,6 @@ function Product({ product }: ProductProps) {
     function onCheckboxClick(event: React.ChangeEvent<HTMLInputElement>): void {
         const checked = event.target.checked
 
-        console.log(checked)
-
         if (checked) {
             dispatch(addProductToSelected(product))
         } else {
