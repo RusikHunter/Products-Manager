@@ -1,0 +1,64 @@
+@use "@/styles/index" as *;
+
+.dialog {
+    width: 1200px;
+    position: fixed;
+    top: 25%;
+    padding-block: 25px;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+    background-color: var(--color-gray);
+
+    @include laptop {
+        width: 850px;
+    }
+
+    @include tablet {
+        top: 15%;
+        z-index: 999;
+        width: 80%;
+    }
+
+    @include mobile {
+        top: 10%;
+        width: 96%;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.title {
+    @include fluid-text(36, 36);
+    @include font(var(--font-family), 600, 1);
+
+    @include mobile {
+        @include fluid-text(24, 24);
+    }
+}
+
+.label {
+    @include fluid-text(20, 20);
+    @include font(var(--font-family), 400, 1);
+}
+
+.textarea {
+    height: 150px;
+}
+
+.button__submit {
+    width: 150px;
+    margin-inline: auto;
+}
+
+.button__close {
+    position: absolute;
+    @include fluid-text(20, 20);
+    @include font(var(--font-family), 400, 1);
+    top: 15px;
+    right: 15px;
+}

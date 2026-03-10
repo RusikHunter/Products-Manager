@@ -2,6 +2,8 @@ import { useAppDispatch } from "@/hooks/useAppDispatch"
 import { removeProducts, removeSelectedProducts, sortProductsBy } from "@/store/reducers/productsReducer"
 import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
+import AddProductModal from "../AddProductModal/AddProductModal"
+import { useState } from "react"
 
 export enum SortSelectValues {
     BY_ID,
@@ -20,8 +22,10 @@ type Control = {
 }
 
 function ControlPanel() {
+    const [isAddProductModalOpen, setIsAddProductModalOpen] = useState<boolean>(false)
+
     const controls: Control[] = [
-        { name: "Add new product", onClickFunction: mock, type: "button" },
+        { name: "Add new product", onClickFunction: addNewProduct, type: "button" },
         { name: "Update the list", onClickFunction: updateList, type: "button" },
         {
             name: "Sort by", options: [
@@ -48,14 +52,14 @@ function ControlPanel() {
         dispatch(removeSelectedProducts())
     }
 
+    function addNewProduct(): void {
+        setIsAddProductModalOpen(true)
+    }
+
     function sortBy(e: React.ChangeEvent<HTMLSelectElement>): void {
         const value: number = Number(e.target.value)
 
         dispatch(sortProductsBy(value))
-    }
-
-    function mock() {
-        console.log(123)
     }
 
     return (
@@ -94,6 +98,8 @@ function ControlPanel() {
                     </div>
                 </div>
             </div>
+
+            <AddProductModal isOpen={isAddProductModalOpen} setIsOpen={setIsAddProductModalOpen} />
         </section>
     )
 }

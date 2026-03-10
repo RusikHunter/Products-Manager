@@ -18,7 +18,6 @@ const productsSlice = createSlice({
     initialState,
     reducers: {
         removeProducts: (state) => {
-            console.log(123)
             state.products = []
         },
         removeProductByObject: (state, action): void => {
@@ -55,6 +54,23 @@ const productsSlice = createSlice({
                     state.products.sort((a, b) => a.price - b.price)
                     break
             }
+        },
+        addProduct: (state, action): void => {
+            console.log(action.payload)
+
+            const d = new Date();
+            const formattedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+            const newProduct: ProductType = {
+                id: state.products.length + 1,
+                title: action.payload.title,
+                description: action.payload.description,
+                count: action.payload.count,
+                production_date: formattedDate,
+                price: action.payload.price
+            }
+
+            state.products.push(newProduct)
         }
     },
     extraReducers: (builder) => {
@@ -72,7 +88,8 @@ export const
         addProductToSelected,
         removeProductOfSelected,
         removeSelectedProducts,
-        sortProductsBy
+        sortProductsBy,
+        addProduct
     } = productsSlice.actions
 
 export default productsSlice.reducer

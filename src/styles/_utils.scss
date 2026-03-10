@@ -43,3 +43,14 @@
     padding: 8px 16px;
     @include font(var(--font-family), 400, 1);
 }
+
+.input,
+.textarea {
+    padding: 10px;
+    @include fluid-text(20, 20);
+    @include font(var(--font-family), 400, 1);
+}
+
+.textarea {
+    resize: none;
+}
