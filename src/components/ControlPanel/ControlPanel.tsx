@@ -3,6 +3,7 @@ import { removeProducts, removeSelectedProducts, sortProductsBy } from "@/store/
 import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 import AddProductModal from "../AddProductModal/AddProductModal"
+import { useState } from "react"
 
 export enum SortSelectValues {
     BY_ID,
@@ -21,6 +22,8 @@ type Control = {
 }
 
 function ControlPanel() {
+    const [isAddProductModalOpen, setIsAddProductModalOpen] = useState<boolean>(false)
+
     const controls: Control[] = [
         { name: "Add new product", onClickFunction: addNewProduct, type: "button" },
         { name: "Update the list", onClickFunction: updateList, type: "button" },
@@ -50,7 +53,7 @@ function ControlPanel() {
     }
 
     function addNewProduct(): void {
-
+        setIsAddProductModalOpen(true)
     }
 
     function sortBy(e: React.ChangeEvent<HTMLSelectElement>): void {
@@ -96,7 +99,7 @@ function ControlPanel() {
                 </div>
             </div>
 
-            <AddProductModal />
+            <AddProductModal isOpen={isAddProductModalOpen} setIsOpen={setIsAddProductModalOpen} />
         </section>
     )
 }
