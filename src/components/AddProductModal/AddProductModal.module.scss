@@ -1,16 +1,31 @@
 @use "@/styles/index" as *;
 
 .dialog {
+    width: 1200px;
     position: fixed;
     top: 25%;
     display: flex;
     flex-direction: column;
     gap: 50px;
-    width: 40%;
     padding-block: 25px;
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     background-color: var(--color-gray);
+
+    @include laptop {
+        width: 850px;
+    }
+
+    @include tablet {
+        top: 15%;
+        z-index: 999;
+        width: 80%;
+    }
+
+    @include mobile {
+        top: 10%;
+        width: 96%;
+    }
 }
 
 .form {
@@ -22,6 +37,10 @@
 .title {
     @include fluid-text(36, 36);
     @include font(var(--font-family), 600, 1);
+
+    @include mobile {
+        @include fluid-text(24, 24);
+    }
 }
 
 .label {
