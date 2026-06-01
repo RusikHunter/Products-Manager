@@ -3,11 +3,14 @@ import Product from "@/components/Product/Product"
 import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 import { useAppSelector } from "@/hooks/useAppSelector"
 import type { ProductType } from "@/@types/ProductType"
+import { useState } from "react"
 
 function ProductsList() {
     const products: ProductType[] = useAppSelector(state => state.productsReducer.products)
 
     if (!products) return
+
+    const [isProductInfoModalOpen, setIsProductInfoModalOpen] = useState<boolean>(true)
 
     return (
         <section className={`${styles.products_list_content} section`}>
@@ -25,7 +28,7 @@ function ProductsList() {
                             }
                         </ul>
 
-                        <ProductInfoModal />
+                        <ProductInfoModal isOpen={isProductInfoModalOpen} setIsOpen={setIsProductInfoModalOpen} />
                     </div>
                 </div>
             </div>

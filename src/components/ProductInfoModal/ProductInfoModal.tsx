@@ -1,10 +1,19 @@
 import styles from "./ProductInfoModal.module.scss"
 
-function ProductInfoModal() {
+type ProductInfoModalProps = {
+    isOpen: boolean,
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+function ProductInfoModal({ isOpen, setIsOpen }: ProductInfoModalProps) {
+    const handleCloseClick = (): void => {
+        setIsOpen(false)
+    }
+
     return (
-        <dialog className={`${styles.dialog} dialog`}>
+        <dialog open={isOpen ? true : false} className={`${styles.dialog} dialog`}>
             <div className={styles.dialog__content}>
-                <button className={`${styles.button__close} button__control`}>X</button>
+                <button className={`${styles.button__close} button__control`} onClick={handleCloseClick}>X</button>
 
                 <p className={styles.id}>ID: 123</p>
 
