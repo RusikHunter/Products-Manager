@@ -36,5 +36,5 @@
 .description_definition {
     @include fluid-text(20, 18);
     @include font(var(--font-family), 400, 1);
-    color: var(--color-gray);
+    color: var(--color-blue);
 }
