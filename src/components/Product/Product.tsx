@@ -4,6 +4,7 @@ import type { ProductType } from "@/@types/ProductType"
 import { removeProductByObject } from "@/store/reducers/productsReducer"
 import { addProductToSelected } from "@/store/reducers/productsReducer"
 import { removeProductOfSelected } from "@/store/reducers/productsReducer"
+import { tagCurrentProductForInfo } from "@/store/reducers/productsReducer"
 
 type ProductProps = {
     product: ProductType
@@ -14,6 +15,10 @@ function Product({ product }: ProductProps) {
 
     function onDelete(): void {
         dispatch(removeProductByObject(product))
+    }
+
+    function onShowInfo(): void {
+        dispatch(tagCurrentProductForInfo(product))
     }
 
     function onCheckboxClick(event: React.ChangeEvent<HTMLInputElement>): void {
@@ -48,7 +53,7 @@ function Product({ product }: ProductProps) {
 
                     <button className={`${styles.button__delete} button__control`} onClick={onDelete}>Delete</button>
 
-                    <button className={`${styles.button__info} button__control`}>Show info</button>
+                    <button className={`${styles.button__info} button__control`} onClick={onShowInfo}>Show info</button>
                 </div>
             </div>
         </article>

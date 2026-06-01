@@ -5,12 +5,14 @@ import { SortSelectValues } from '@/components/ControlPanel/ControlPanel'
 
 type InitialStateType = {
     products: ProductType[],
-    selectedProducts: ProductType[]
+    selectedProducts: ProductType[],
+    currentProductForInfo: ProductType | null
 }
 
 const initialState: InitialStateType = {
     products: [],
-    selectedProducts: []
+    selectedProducts: [],
+    currentProductForInfo: null
 }
 
 const productsSlice = createSlice({
@@ -56,7 +58,7 @@ const productsSlice = createSlice({
             }
         },
         addProduct: (state, action): void => {
-            console.log(action.payload)
+            // console.log(action.payload)
 
             const d = new Date();
             const formattedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -71,6 +73,9 @@ const productsSlice = createSlice({
             }
 
             state.products.push(newProduct)
+        },
+        tagCurrentProductForInfo: (state, action): void => {
+            state.currentProductForInfo = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -89,7 +94,8 @@ export const
         removeProductOfSelected,
         removeSelectedProducts,
         sortProductsBy,
-        addProduct
+        addProduct,
+        tagCurrentProductForInfo
     } = productsSlice.actions
 
 export default productsSlice.reducer
