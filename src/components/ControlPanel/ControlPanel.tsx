@@ -4,7 +4,6 @@ import styles from "./ControlPanel.module.scss"
 import { fetchProducts } from "@/store/asyncActions/fetchProducts"
 import AddProductModal from "../AddProductModal/AddProductModal"
 import { useState } from "react"
-import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
 
 export enum SortSelectValues {
     BY_ID,
@@ -101,7 +100,6 @@ function ControlPanel() {
             </div>
 
             <AddProductModal isOpen={isAddProductModalOpen} setIsOpen={setIsAddProductModalOpen} />
-            <ProductInfoModal />
         </section>
     )
 }
