@@ -5,6 +5,7 @@
     border: var(--border-default);
     border-width: 4px;
     padding: 16px;
+    position: fixed;
     border-radius: var(--border-radius-default);
 
     @include tablet {

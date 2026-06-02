@@ -6,13 +6,15 @@ import { SortSelectValues } from '@/components/ControlPanel/ControlPanel'
 type InitialStateType = {
     products: ProductType[],
     selectedProducts: ProductType[],
-    currentProductForInfo: ProductType | null
+    currentProductForInfo: ProductType | null,
+    isCurrentProductForInfoAvailable: boolean
 }
 
 const initialState: InitialStateType = {
     products: [],
     selectedProducts: [],
-    currentProductForInfo: null
+    currentProductForInfo: null,
+    isCurrentProductForInfoAvailable: true
 }
 
 const productsSlice = createSlice({
@@ -76,6 +78,9 @@ const productsSlice = createSlice({
         },
         tagCurrentProductForInfo: (state, action): void => {
             state.currentProductForInfo = action.payload
+        },
+        setIsCurrentProductForInfoAvailable: (state, action): void => {
+            state.isCurrentProductForInfoAvailable = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -95,7 +100,8 @@ export const
         removeSelectedProducts,
         sortProductsBy,
         addProduct,
-        tagCurrentProductForInfo
+        tagCurrentProductForInfo,
+        setIsCurrentProductForInfoAvailable
     } = productsSlice.actions
 
 export default productsSlice.reducer
