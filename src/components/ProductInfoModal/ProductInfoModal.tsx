@@ -1,17 +1,19 @@
 import styles from "./ProductInfoModal.module.scss"
+import { useAppDispatch } from "@/hooks/useAppDispatch"
+import { setIsCurrentProductForInfoAvailable } from "@/store/reducers/productsReducer"
+import { useAppSelector } from "@/hooks/useAppSelector"
 
-type ProductInfoModalProps = {
-    isOpen: boolean,
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
+function ProductInfoModal() {
+    const dispatch = useAppDispatch()
 
-function ProductInfoModal({ isOpen, setIsOpen }: ProductInfoModalProps) {
     const handleCloseClick = (): void => {
-        setIsOpen(false)
+        dispatch(setIsCurrentProductForInfoAvailable(false))
     }
 
+    const isOpen = useAppSelector(state => state.productsReducer.isCurrentProductForInfoAvailable)
+
     return (
-        <dialog open={isOpen ? true : false} className={`${styles.dialog} dialog`}>
+        <dialog open={isOpen} className={`${styles.dialog} dialog`}>
             <div className={styles.dialog__content}>
                 <button className={`${styles.button__close} button__control`} onClick={handleCloseClick}>X</button>
 

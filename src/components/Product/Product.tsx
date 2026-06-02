@@ -2,6 +2,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch"
 import styles from "./Product.module.scss"
 import type { ProductType } from "@/@types/ProductType"
 import { removeProductByObject } from "@/store/reducers/productsReducer"
+import { setIsCurrentProductForInfoAvailable } from "@/store/reducers/productsReducer"
 import { addProductToSelected } from "@/store/reducers/productsReducer"
 import { removeProductOfSelected } from "@/store/reducers/productsReducer"
 import { tagCurrentProductForInfo } from "@/store/reducers/productsReducer"
@@ -18,6 +19,7 @@ function Product({ product }: ProductProps) {
     }
 
     function onShowInfo(): void {
+        dispatch(setIsCurrentProductForInfoAvailable(true))
         dispatch(tagCurrentProductForInfo(product))
     }
 
