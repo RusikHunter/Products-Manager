@@ -14,7 +14,7 @@ const initialState: InitialStateType = {
     products: [],
     selectedProducts: [],
     currentProductForInfo: null,
-    isCurrentProductForInfoAvailable: true
+    isCurrentProductForInfoAvailable: false
 }
 
 const productsSlice = createSlice({
