@@ -7,7 +7,7 @@
     padding: 16px;
     position: fixed;
     border-radius: var(--border-radius-default);
-    top: 30%;
+    top: 25%;
 
     @include tablet {
         top: 110px;
@@ -26,8 +26,31 @@
     gap: 16px;
 }
 
+.id {
+    @include fluid-text(28, 22);
+    @include font(var(--font-family), 400, 1);
+    margin-bottom: 50px;
+}
+
 .button__close {
     top: 0;
     right: 0;
     position: absolute;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.label {
+    width: max-content;
+    @include fluid-text(18, 18);
+    @include font(var(--font-family), 400, 1);
+}
+
+.button__save {
+    margin-top: 50px;
+    padding-block: 30px;
 }
