@@ -9,6 +9,10 @@
     border-radius: var(--border-radius-default);
     top: 25%;
 
+    @include laptop {
+        width: 40%;
+    }
+
     @include tablet {
         top: 110px;
         width: 60%;
