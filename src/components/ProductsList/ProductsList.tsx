@@ -1,6 +1,7 @@
 import styles from "./ProductsList.module.scss"
 import Product from "@/components/Product/Product"
 import ProductInfoModal from "../ProductInfoModal/ProductInfoModal"
+import ChangeProductModal from "../ChangeProductModal/ChangeProductModal"
 import { useAppSelector } from "@/hooks/useAppSelector"
 import type { ProductType } from "@/@types/ProductType"
 
@@ -26,6 +27,7 @@ function ProductsList() {
                         </ul>
 
                         <ProductInfoModal />
+                        <ChangeProductModal />
                     </div>
                 </div>
             </div>

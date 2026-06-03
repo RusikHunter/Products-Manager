@@ -1,0 +1,33 @@
+@use "@/styles/index" as *;
+
+.dialog {
+    width: 30%;
+    border: var(--border-default);
+    border-width: 4px;
+    padding: 16px;
+    position: fixed;
+    border-radius: var(--border-radius-default);
+    top: 30%;
+
+    @include tablet {
+        top: 110px;
+        width: 60%;
+    }
+
+    @include mobile {
+        width: 96%;
+    }
+}
+
+.dialog__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.button__close {
+    top: 0;
+    right: 0;
+    position: absolute;
+}
