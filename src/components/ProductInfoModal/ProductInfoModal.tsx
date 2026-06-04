@@ -1,6 +1,6 @@
 import styles from "./ProductInfoModal.module.scss"
 import { useAppDispatch } from "@/hooks/useAppDispatch"
-import { removeProductByObject, setIsCurrentProductForInfoAvailable } from "@/store/reducers/productsReducer"
+import { removeProductByObject, setIsChangeProductModalOpen, setIsCurrentProductForInfoAvailable } from "@/store/reducers/productsReducer"
 import { useAppSelector } from "@/hooks/useAppSelector"
 import type { ProductType } from "@/@types/ProductType"
 
@@ -12,6 +12,10 @@ function ProductInfoModal() {
 
     const handleCloseClick = (): void => {
         dispatch(setIsCurrentProductForInfoAvailable(false))
+    }
+
+    const handleChangeClick = (): void => {
+        dispatch(setIsChangeProductModalOpen(true))
     }
 
     const handleDeleteClick = (): void => {
@@ -36,7 +40,7 @@ function ProductInfoModal() {
 
                 <p className={styles.price}>Price: {currentProduct?.price}$</p>
 
-                <button className={`${styles.button__change} button__control`}>Change</button>
+                <button className={`${styles.button__change} button__control`} onClick={handleChangeClick}>Change</button>
 
                 <button className={`${styles.button__delete} button__control`} onClick={handleDeleteClick}>Delete</button>
             </div>

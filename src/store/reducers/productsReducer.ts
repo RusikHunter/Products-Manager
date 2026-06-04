@@ -7,14 +7,16 @@ type InitialStateType = {
     products: ProductType[],
     selectedProducts: ProductType[],
     currentProductForInfo: ProductType | null,
-    isCurrentProductForInfoAvailable: boolean
+    isCurrentProductForInfoAvailable: boolean,
+    isChangeProductModalOpen: boolean
 }
 
 const initialState: InitialStateType = {
     products: [],
     selectedProducts: [],
     currentProductForInfo: null,
-    isCurrentProductForInfoAvailable: false
+    isCurrentProductForInfoAvailable: false,
+    isChangeProductModalOpen: false
 }
 
 const productsSlice = createSlice({
@@ -81,6 +83,9 @@ const productsSlice = createSlice({
         },
         setIsCurrentProductForInfoAvailable: (state, action): void => {
             state.isCurrentProductForInfoAvailable = action.payload
+        },
+        setIsChangeProductModalOpen: (state, action): void => {
+            state.isChangeProductModalOpen = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -101,7 +106,8 @@ export const
         sortProductsBy,
         addProduct,
         tagCurrentProductForInfo,
-        setIsCurrentProductForInfoAvailable
+        setIsCurrentProductForInfoAvailable,
+        setIsChangeProductModalOpen
     } = productsSlice.actions
 
 export default productsSlice.reducer

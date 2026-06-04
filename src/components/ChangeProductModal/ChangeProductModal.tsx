@@ -1,10 +1,26 @@
 import styles from "./ChangeProductModal.module.scss"
+import { useAppDispatch } from "@/hooks/useAppDispatch"
+import { useAppSelector } from "@/hooks/useAppSelector"
+import { setIsChangeProductModalOpen } from "@/store/reducers/productsReducer"
 
 function ChangeProductModal() {
+    const dispatch = useAppDispatch()
+
+    const isOpen = useAppSelector(state => state.productsReducer.isChangeProductModalOpen)
+
+    const handleCloseClick = (): void => {
+        dispatch(setIsChangeProductModalOpen(false))
+    }
+
+    const handleSaveClick = (event: React.MouseEvent): void => {
+        event.preventDefault()
+        dispatch(setIsChangeProductModalOpen(false))
+    }
+
     return (
-        <dialog open className={`${styles.dialog} dialog`}>
+        <dialog open={isOpen} className={`${styles.dialog} dialog`}>
             <div className={styles.dialog__content}>
-                <button className={`${styles.button__close} button__control`}>X</button>
+                <button className={`${styles.button__close} button__control`} onClick={handleCloseClick}>X</button>
 
                 <p className={styles.id}>ID: 123</p>
 
@@ -21,7 +37,7 @@ function ChangeProductModal() {
                     <label htmlFor="changeModalPriceInput" className={styles.label}>Price: </label>
                     <input type="number" id="changeModalPriceInput" className={`${styles.input} input`} />
 
-                    <button className={`${styles.button__save} button__control`}>Save changes</button>
+                    <button className={`${styles.button__save} button__control`} onClick={(event) => handleSaveClick(event)}>Save changes</button>
                 </form>
             </div>
         </dialog>
