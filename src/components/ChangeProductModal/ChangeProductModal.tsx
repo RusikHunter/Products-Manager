@@ -19,21 +19,21 @@ function ChangeProductModal() {
         dispatch(setIsChangeProductModalOpen(false))
     }
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
 
-        // console.log(name)
+        // console.log(name, ": ", value)
 
         setChangedProduct(prev => ({
-
-
+            ...prev!,
+            [name]: value
         }))
+
+        console.log(changedProduct)
     }
 
     const handleSaveSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
-
-
 
 
         dispatch(setIsChangeProductModalOpen(false))
@@ -52,6 +52,7 @@ function ChangeProductModal() {
                         type="text"
                         id="changeModalTitleInput"
                         className={`${styles.input} input`}
+                        name="title"
                         value={changedProduct?.title ?? ""}
                         onChange={handleChange}
                     />
@@ -61,6 +62,7 @@ function ChangeProductModal() {
                         type="text"
                         id="changeModalDescriptionInput"
                         className={`${styles.input} input`}
+                        name="description"
                         value={changedProduct?.description ?? ""}
                         onChange={handleChange}
                     />
@@ -70,6 +72,7 @@ function ChangeProductModal() {
                         type="number"
                         id="changeModalCountInput"
                         className={`${styles.input} input`}
+                        name="count"
                         value={changedProduct?.count ?? ""}
                         onChange={handleChange}
                     />
@@ -79,6 +82,7 @@ function ChangeProductModal() {
                         type="number"
                         id="changeModalPriceInput"
                         className={`${styles.input} input`}
+                        name="price"
                         value={changedProduct?.price ?? ""}
                         onChange={handleChange}
                     />
