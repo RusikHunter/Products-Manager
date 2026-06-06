@@ -67,13 +67,18 @@ const productsSlice = createSlice({
             }
         },
         addProduct: (state, action): void => {
-            // console.log(action.payload)
-
             const d = new Date();
             const formattedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
+            const usedIds = new Set(state.products.map(p => p.id))
+
+            let id = 0
+            while (usedIds.has(id)) {
+                id++
+            }
+
             const newProduct: ProductType = {
-                id: state.products.length + 1,
+                id: id,
                 title: action.payload.title,
                 description: action.payload.description,
                 count: action.payload.count,
