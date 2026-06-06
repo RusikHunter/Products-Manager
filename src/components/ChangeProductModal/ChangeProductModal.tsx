@@ -3,7 +3,8 @@ import styles from "./ChangeProductModal.module.scss"
 import { useAppDispatch } from "@/hooks/useAppDispatch"
 import { useAppSelector } from "@/hooks/useAppSelector"
 import { setIsChangeProductModalOpen } from "@/store/reducers/productsReducer"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
 
 function ChangeProductModal() {
     const dispatch = useAppDispatch()
@@ -12,6 +13,12 @@ function ChangeProductModal() {
     const currentProduct: ProductType | null = useAppSelector(state => state.productsReducer.currentProductForInfo)
 
     const [changedProduct, setChangedProduct] = useState<ProductType | null>(currentProduct)
+
+    useEffect(() => {
+        setChangedProduct(currentProduct)
+    }, [currentProduct])
+
+    console.log("changedProduct: ", changedProduct)
 
     if (!currentProduct) return
 
@@ -22,11 +29,11 @@ function ChangeProductModal() {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
 
-        // console.log(name, ": ", value)
-
         setChangedProduct(prev => ({
             ...prev!,
-            [name]: value
+            [name]: name === "price" || name === "count"
+                ? Number(value)
+                : value
         }))
 
         console.log(changedProduct)
