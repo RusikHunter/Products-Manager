@@ -3,6 +3,8 @@ import styles from "./ChangeProductModal.module.scss"
 import { useAppDispatch } from "@/hooks/useAppDispatch"
 import { useAppSelector } from "@/hooks/useAppSelector"
 import { setIsChangeProductModalOpen } from "@/store/reducers/productsReducer"
+import { setCurrentProductForInfo } from "@/store/reducers/productsReducer"
+import { replaceProduct } from "@/store/reducers/productsReducer"
 import { useState, useEffect } from "react"
 
 
@@ -17,8 +19,6 @@ function ChangeProductModal() {
     useEffect(() => {
         setChangedProduct(currentProduct)
     }, [currentProduct])
-
-    console.log("changedProduct: ", changedProduct)
 
     if (!currentProduct) return
 
@@ -35,13 +35,14 @@ function ChangeProductModal() {
                 ? Number(value)
                 : value
         }))
-
-        console.log(changedProduct)
     }
 
     const handleSaveSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
 
+        dispatch(setCurrentProductForInfo(changedProduct))
+
+        dispatch(replaceProduct(changedProduct))
 
         dispatch(setIsChangeProductModalOpen(false))
     }

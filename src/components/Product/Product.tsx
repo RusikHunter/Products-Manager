@@ -5,7 +5,7 @@ import { removeProductByObject } from "@/store/reducers/productsReducer"
 import { setIsCurrentProductForInfoAvailable } from "@/store/reducers/productsReducer"
 import { addProductToSelected } from "@/store/reducers/productsReducer"
 import { removeProductOfSelected } from "@/store/reducers/productsReducer"
-import { tagCurrentProductForInfo } from "@/store/reducers/productsReducer"
+import { setCurrentProductForInfo } from "@/store/reducers/productsReducer"
 
 type ProductProps = {
     product: ProductType
@@ -20,7 +20,7 @@ function Product({ product }: ProductProps) {
 
     function onShowInfo(): void {
         dispatch(setIsCurrentProductForInfoAvailable(true))
-        dispatch(tagCurrentProductForInfo(product))
+        dispatch(setCurrentProductForInfo(product))
     }
 
     function onCheckboxClick(event: React.ChangeEvent<HTMLInputElement>): void {

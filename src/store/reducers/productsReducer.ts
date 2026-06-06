@@ -48,6 +48,11 @@ const productsSlice = createSlice({
 
             state.selectedProducts = []
         },
+        replaceProduct: (state, action) => {
+            const index = state.products.findIndex(p => p.id === action.payload.id)
+
+            state.products[index] = action.payload
+        },
         sortProductsBy: (state, action): void => {
             switch (action.payload) {
                 case SortSelectValues.BY_ID:
@@ -78,7 +83,7 @@ const productsSlice = createSlice({
 
             state.products.push(newProduct)
         },
-        tagCurrentProductForInfo: (state, action): void => {
+        setCurrentProductForInfo: (state, action): void => {
             state.currentProductForInfo = action.payload
         },
         setIsCurrentProductForInfoAvailable: (state, action): void => {
@@ -103,9 +108,10 @@ export const
         addProductToSelected,
         removeProductOfSelected,
         removeSelectedProducts,
+        replaceProduct,
         sortProductsBy,
         addProduct,
-        tagCurrentProductForInfo,
+        setCurrentProductForInfo,
         setIsCurrentProductForInfoAvailable,
         setIsChangeProductModalOpen
     } = productsSlice.actions
