@@ -32,7 +32,7 @@ function ChangeProductModal() {
         setChangedProduct(prev => ({
             ...prev!,
             [name]: name === "price" || name === "count"
-                ? Number(value)
+                ? value === "" ? null : Number(value)
                 : value
         }))
     }
