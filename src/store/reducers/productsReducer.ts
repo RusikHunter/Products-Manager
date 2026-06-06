@@ -7,14 +7,16 @@ type InitialStateType = {
     products: ProductType[],
     selectedProducts: ProductType[],
     currentProductForInfo: ProductType | null,
-    isCurrentProductForInfoAvailable: boolean
+    isCurrentProductForInfoAvailable: boolean,
+    isChangeProductModalOpen: boolean
 }
 
 const initialState: InitialStateType = {
     products: [],
     selectedProducts: [],
     currentProductForInfo: null,
-    isCurrentProductForInfoAvailable: false
+    isCurrentProductForInfoAvailable: false,
+    isChangeProductModalOpen: false
 }
 
 const productsSlice = createSlice({
@@ -46,6 +48,11 @@ const productsSlice = createSlice({
 
             state.selectedProducts = []
         },
+        replaceProduct: (state, action) => {
+            const index = state.products.findIndex(p => p.id === action.payload.id)
+
+            state.products[index] = action.payload
+        },
         sortProductsBy: (state, action): void => {
             switch (action.payload) {
                 case SortSelectValues.BY_ID:
@@ -60,13 +67,18 @@ const productsSlice = createSlice({
             }
         },
         addProduct: (state, action): void => {
-            // console.log(action.payload)
-
             const d = new Date();
             const formattedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
+            const usedIds = new Set(state.products.map(p => p.id))
+
+            let id = 0
+            while (usedIds.has(id)) {
+                id++
+            }
+
             const newProduct: ProductType = {
-                id: state.products.length + 1,
+                id: id,
                 title: action.payload.title,
                 description: action.payload.description,
                 count: action.payload.count,
@@ -76,11 +88,14 @@ const productsSlice = createSlice({
 
             state.products.push(newProduct)
         },
-        tagCurrentProductForInfo: (state, action): void => {
+        setCurrentProductForInfo: (state, action): void => {
             state.currentProductForInfo = action.payload
         },
         setIsCurrentProductForInfoAvailable: (state, action): void => {
             state.isCurrentProductForInfoAvailable = action.payload
+        },
+        setIsChangeProductModalOpen: (state, action): void => {
+            state.isChangeProductModalOpen = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -98,10 +113,12 @@ export const
         addProductToSelected,
         removeProductOfSelected,
         removeSelectedProducts,
+        replaceProduct,
         sortProductsBy,
         addProduct,
-        tagCurrentProductForInfo,
-        setIsCurrentProductForInfoAvailable
+        setCurrentProductForInfo,
+        setIsCurrentProductForInfoAvailable,
+        setIsChangeProductModalOpen
     } = productsSlice.actions
 
 export default productsSlice.reducer

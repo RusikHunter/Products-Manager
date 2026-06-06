@@ -27,6 +27,8 @@ function AddProductModal({ isOpen, setIsOpen }: AddProductModalProps) {
 
         dispatch(addProduct(productData))
 
+        form.current.reset()
+
         setIsOpen(false)
     }
 
